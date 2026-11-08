@@ -729,9 +729,8 @@
       currentIdx = idx;
       frame.style.display = '';
       playerError.style.display = 'none';
-      // cache-bust reload
-      const sep = streams[idx].indexOf('?') !== -1 ? '&' : '?';
-      frame.src = streams[idx] + sep + '_se=' + Date.now();
+      // load EXACT API URL — no cache-bust, no extra params
+      frame.src = streams[idx];
       streamLabel.textContent = `Stream ${idx + 1} of ${streams.length}`;
       // update active button
       streamBtns.querySelectorAll('.stream-btn').forEach(function(b, i) {
