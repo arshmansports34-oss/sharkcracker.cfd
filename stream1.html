@@ -4,22 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Watch Live Stream | Streameast</title>
-  <meta name="robots" content="noindex, nofollow">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
   <meta name="theme-color" content="#0a1214">
-  <link rel="icon" type="image/png" href="https://regames4u.cfd/favi.png">
 
   <!-- ===== POPUNDER AD ===== -->
   <script data-cfasync="false" src="https://capitalhospitals.org/1/cd2ede3915aed8ac32648df7385b788a"></script>
 
+  <!-- ===== FAVICON ===== -->
+  <link rel="icon" type="image/png" href="https://regames4u.cfd/favi.png">
+
+  <!-- ===== PERFORMANCE: preconnect ===== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="preconnect" href="https://czernik.org">
-  <link rel="dns-prefetch" href="https://ovogoal.pages.dev">
+
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
   <style>
-    /* ===== THEME: DARK TEAL + CYAN (matches homepage) ===== */
+    /* ===== THEME: DARK TEAL + CYAN (same as index) ===== */
     :root {
       --bg: #0a1214;
       --card: #101c20;
@@ -39,26 +43,30 @@
       box-sizing: border-box;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
-    h3, .brand, .p-title, .watch-btn, .p-btn, .server-btn, .m-name, .vs-badge {
+    h1, h2, h3, .brand, .stream-btn {
       font-family: 'Chakra Petch', 'Inter', sans-serif;
     }
     body {
       background:
         radial-gradient(1100px 500px at 50% -8%, rgba(34, 211, 238, 0.07), transparent 60%),
+        radial-gradient(800px 400px at 0% 100%, rgba(8, 145, 178, 0.06), transparent 65%),
         var(--bg);
       color: var(--text);
       line-height: 1.6;
       padding: 1.5rem 2rem 100px 2rem;
       -webkit-font-smoothing: antialiased;
     }
-    .container { max-width: 1600px; margin: 0 auto; }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
     ::selection { background: rgba(34, 211, 238, 0.35); }
     ::-webkit-scrollbar { width: 10px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: #1c2f36; border-radius: 6px; }
     ::-webkit-scrollbar-thumb:hover { background: var(--accent-strong); }
 
-    /* ===== TOP HEADER ===== */
+    /* ===== TOP HEADER BAR ===== */
     .top-header {
       background: var(--card-grad);
       border: 1px solid var(--border);
@@ -88,25 +96,54 @@
       color: var(--accent);
       filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.7));
     }
+    .top-header .header-right {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+    .top-header .live-dot {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(255,255,255,0.06);
+      padding: 0.3rem 0.85rem;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.7rem;
+      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+    .top-header .live-dot i {
+      color: var(--accent);
+      font-size: 0.5rem;
+      animation: pulse 1.5s infinite;
+    }
     .back-btn {
       display: flex;
       align-items: center;
       gap: 0.45rem;
-      background: linear-gradient(135deg, #22d3ee, #0891b2);
-      color: #06222a;
-      padding: 0.45rem 1rem;
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--border);
+      padding: 0.4rem 1rem;
       border-radius: 30px;
-      font-weight: 700;
-      font-size: 0.78rem;
+      font-weight: 600;
+      font-size: 0.75rem;
       letter-spacing: 0.5px;
       text-transform: uppercase;
       text-decoration: none;
       transition: 0.2s;
-      box-shadow: 0 4px 14px rgba(34, 211, 238, 0.3);
+      cursor: pointer;
     }
     .back-btn:hover {
-      background: linear-gradient(135deg, #67e8f9, #22d3ee);
+      background: var(--accent-soft);
+      box-shadow: 0 0 14px rgba(34, 211, 238, 0.25);
       transform: translateY(-1px);
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
     }
 
     /* ===== MATCH HEADER ===== */
@@ -114,16 +151,16 @@
       background: var(--card-grad);
       border: 1px solid var(--border);
       border-radius: 14px;
-      padding: 1.6rem 2rem;
-      margin-bottom: 1.5rem;
+      padding: 1.5rem 2rem;
+      margin-bottom: 1.25rem;
       box-shadow: 0 6px 28px rgba(0, 0, 0, 0.55);
+      position: relative;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 2.5rem;
+      gap: 2rem;
       flex-wrap: wrap;
-      position: relative;
-      overflow: hidden;
     }
     .match-header::before {
       content: "";
@@ -138,10 +175,12 @@
       display: flex;
       align-items: center;
       gap: 0.9rem;
+      min-width: 180px;
     }
+    .match-team.right { flex-direction: row-reverse; text-align: right; }
     .match-team img {
-      width: 64px;
-      height: 64px;
+      width: 56px;
+      height: 56px;
       object-fit: contain;
       background: rgba(0,0,0,0.32);
       border: 1px solid rgba(34, 211, 238, 0.25);
@@ -149,69 +188,179 @@
       padding: 6px;
       flex-shrink: 0;
     }
-    .match-team .m-name {
-      font-size: 1.25rem;
+    .match-team .team-name {
+      font-family: 'Chakra Petch', sans-serif;
       font-weight: 700;
-      letter-spacing: 0.5px;
+      font-size: 1.15rem;
       color: #ffffff;
-      max-width: 220px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      max-width: 170px;
     }
     .match-vs {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.35rem;
-    }
-    .match-vs .vs-badge {
+      font-family: 'Chakra Petch', sans-serif;
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 0.85rem;
       color: var(--accent);
-      background: rgba(0,0,0,0.35);
-      border: 1px solid var(--border);
-      width: 52px;
-      height: 52px;
+      background: rgba(0,0,0,0.32);
+      width: 44px;
+      height: 44px;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 50%;
-      letter-spacing: 1px;
+      flex-shrink: 0;
+      letter-spacing: 0.5px;
+      box-shadow: 0 0 16px rgba(34, 211, 238, 0.3);
     }
-    .match-vs .league-name {
-      font-size: 0.7rem;
+    .match-meta {
+      width: 100%;
+      text-align: center;
+      margin-top: 0.4rem;
+    }
+    .match-league {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent-soft);
+      border: 1px solid var(--border);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      padding: 0.35rem 1rem;
+      border-radius: 30px;
+    }
+    .match-league img { width: 18px; height: 18px; object-fit: contain; }
+
+    /* ===== PLAYER ===== */
+    .player-wrap {
+      background: var(--card-grad);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 6px 28px rgba(0, 0, 0, 0.55);
+      position: relative;
+    }
+    .player-wrap::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), rgba(34, 211, 238, 0.1));
+      z-index: 2;
+    }
+    .player-box {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      background: #000;
+    }
+    .player-box iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .player-error {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.75rem;
+      background: var(--card);
+      color: var(--muted);
+      font-size: 0.95rem;
+      text-align: center;
+      padding: 1rem;
+    }
+    .player-error i { font-size: 2rem; color: var(--accent); }
+
+    /* ===== PLAYER TOOLBAR ===== */
+    .player-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem;
+      padding: 0.8rem 1.2rem;
+      background: rgba(0,0,0,0.28);
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .stream-label {
+      font-size: 0.72rem;
       font-weight: 700;
       color: var(--muted);
       text-transform: uppercase;
-      letter-spacing: 0.6px;
+      letter-spacing: 0.8px;
       display: flex;
       align-items: center;
       gap: 0.4rem;
-      max-width: 260px;
-      white-space: nowrap;
-      overflow: hidden;
     }
-    .match-vs .league-name img { width: 16px; height: 16px; object-fit: contain; }
-    .live-badge {
+    .stream-label i { color: var(--accent); font-size: 0.7rem; }
+    .stream-btns {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .stream-btn {
+      background: rgba(16, 28, 32, 0.8);
+      border: 1px solid transparent;
+      color: var(--soft);
+      padding: 0.4rem 1rem;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.72rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s ease;
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
-      background: var(--accent-soft);
-      color: var(--accent);
-      border: 1px solid var(--border);
-      font-size: 0.65rem;
-      font-weight: 700;
-      padding: 0.2rem 0.7rem;
-      border-radius: 30px;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      margin-bottom: 0.4rem;
     }
-    .live-badge i { font-size: 0.45rem; animation: pulse 1.5s infinite; }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
+    .stream-btn i { font-size: 0.65rem; }
+    .stream-btn.active, .stream-btn:hover {
+      background: linear-gradient(135deg, #22d3ee, #0891b2);
+      border-color: transparent;
+      color: #06222a;
+      box-shadow: 0 4px 14px rgba(34, 211, 238, 0.3);
+    }
+    .tool-btns {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .tool-btn {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      color: var(--accent);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: 0.2s;
+      font-size: 0.8rem;
+    }
+    .tool-btn:hover {
+      background: var(--accent-soft);
+      box-shadow: 0 0 14px rgba(34, 211, 238, 0.25);
+      transform: translateY(-1px);
     }
 
     /* ===== AD SLOT: TOP ===== */
@@ -219,7 +368,7 @@
       width: 100%;
       max-width: 728px;
       height: 90px;
-      margin: 0 auto 1.5rem;
+      margin: 1.25rem auto;
       background: rgba(16, 28, 32, 0.5);
       border: 1px dashed var(--border);
       border-radius: 10px;
@@ -234,30 +383,6 @@
       overflow: hidden;
       position: relative;
     }
-
-    /* ===== MAIN LAYOUT: [LEFT AD] [PLAYER] [RIGHT AD] ===== */
-    .main-layout {
-      display: flex;
-      gap: 1.2rem;
-      align-items: flex-start;
-    }
-    .player-area { flex: 1; min-width: 0; order: 1; }
-
-    /* ===== 160x600 SIDE ADS ===== */
-    .side-ad {
-      width: 160px;
-      min-width: 160px;
-      height: 600px;
-      background: rgba(16, 28, 32, 0.5);
-      border: 1px dashed var(--border);
-      border-radius: 10px;
-      overflow: hidden;
-      position: sticky;
-      top: 90px;
-      z-index: 40;
-    }
-    .side-ad.left { order: 0; }
-    .side-ad.right { order: 2; }
 
     /* ===== AD CLOSE BUTTON ===== */
     .ad-close-btn {
@@ -284,175 +409,9 @@
     }
     .ad-close-btn i { pointer-events: none; }
 
-    /* ===== VIDEO PLAYER ===== */
-    .player-box {
-      background: var(--card-grad);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      overflow: hidden;
-      box-shadow: 0 6px 28px rgba(0, 0, 0, 0.55);
-      position: relative;
-    }
-    .player-box::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent), rgba(34, 211, 238, 0.1));
-      z-index: 2;
-    }
-    .player-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.75rem 1.3rem;
-      background: rgba(0,0,0,0.28);
-      border-bottom: 1px solid var(--border);
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      position: relative;
-      z-index: 1;
-    }
-    .player-head .p-title {
-      display: flex;
-      align-items: center;
-      gap: 0.55rem;
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: #ffffff;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    .player-head .p-title i { color: var(--accent); font-size: 0.85rem; }
-    .p-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-    .p-btn {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid var(--border);
-      color: var(--soft);
-      padding: 0.4rem 0.95rem;
-      border-radius: 30px;
-      font-weight: 600;
-      font-size: 0.72rem;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      transition: 0.2s;
-      text-decoration: none;
-    }
-    .p-btn:hover {
-      background: var(--accent-soft);
-      color: #ffffff;
-      border-color: rgba(34, 211, 238, 0.45);
-    }
-    .p-btn.primary {
-      background: linear-gradient(135deg, #22d3ee, #0891b2);
-      color: #06222a;
-      border: none;
-      box-shadow: 0 4px 14px rgba(34, 211, 238, 0.3);
-    }
-    .p-btn.primary:hover {
-      background: linear-gradient(135deg, #67e8f9, #22d3ee);
-      transform: translateY(-1px);
-    }
-
-    .video-frame-wrap {
-      position: relative;
-      width: 100%;
-      padding-top: 56.25%; /* 16:9 */
-      background: #000;
-    }
-    .video-frame-wrap iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-    .video-placeholder {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      color: var(--muted);
-      text-align: center;
-      padding: 2rem;
-    }
-    .video-placeholder i { font-size: 2.4rem; color: var(--accent); }
-    .video-placeholder h3 { color: #ffffff; font-size: 1.2rem; letter-spacing: 0.5px; text-transform: uppercase; }
-    .video-placeholder p { font-size: 0.85rem; max-width: 420px; }
-
-    /* ===== SERVER SWITCHER ===== */
-    .server-bar {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      padding: 0.85rem 1.3rem;
-      background: rgba(0,0,0,0.2);
-      border-top: 1px solid var(--border);
-      flex-wrap: wrap;
-    }
-    .server-bar .s-label {
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-    .server-bar .s-label i { color: var(--accent); }
-    .server-btn {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid var(--border);
-      color: var(--soft);
-      padding: 0.4rem 1.05rem;
-      border-radius: 30px;
-      font-weight: 600;
-      font-size: 0.72rem;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    .server-btn:hover { border-color: rgba(34, 211, 238, 0.45); color: #ffffff; }
-    .server-btn.active {
-      background: linear-gradient(135deg, #22d3ee, #0891b2);
-      color: #06222a;
-      border-color: transparent;
-      box-shadow: 0 4px 14px rgba(34, 211, 238, 0.3);
-    }
-
-    /* ===== NOTE ===== */
-    .stream-note {
-      background: var(--card-grad);
-      border: 1px solid var(--border);
-      border-bottom: 3px solid var(--accent-strong);
-      border-radius: 10px;
-      padding: 1rem 1.3rem;
-      margin-top: 1.5rem;
-      font-size: 0.82rem;
-      color: var(--soft);
-      line-height: 1.7;
-    }
-    .stream-note strong { color: #ffffff; }
-    .stream-note i { color: var(--accent); margin-right: 0.4rem; }
-
     /* ===== FOOTER ===== */
     .footer-note {
-      margin-top: 3rem;
+      margin-top: 2rem;
       font-size: 0.75rem;
       color: var(--faint);
       text-align: center;
@@ -460,7 +419,7 @@
       padding-top: 1.5rem;
       letter-spacing: 0.3px;
     }
-    .footer-note a { color: var(--accent); text-decoration: none; font-weight: 700; }
+    .footer-note .kw { color: var(--accent); font-weight: 700; }
 
     /* ===== STICKY BOTTOM AD ===== */
     .ad-slot-sticky-bottom {
@@ -498,55 +457,59 @@
     }
 
     /* ===== RESPONSIVE ===== */
-    @media (max-width: 1100px) {
-      .side-ad { display: none; }
-    }
     @media (max-width: 650px) {
       body { padding: 0.8rem 0.8rem 100px 0.8rem; }
-      .top-header { padding: 0.7rem 1rem; top: 8px; }
+      .top-header { padding: 0.7rem 1rem; flex-wrap: wrap; gap: 0.6rem; top: 8px; }
       .top-header .brand { font-size: 1.2rem; }
-      .match-header { padding: 1.2rem 1rem; gap: 1.2rem; }
-      .match-team img { width: 48px; height: 48px; }
-      .match-team .m-name { font-size: 0.9rem; max-width: 120px; }
-      .match-vs .vs-badge { width: 40px; height: 40px; font-size: 0.8rem; }
+      .top-header .brand i { font-size: 1rem; }
+      .back-btn { padding: 0.35rem 0.75rem; font-size: 0.68rem; }
+      .match-header { padding: 1.2rem 1rem; gap: 1rem; }
+      .match-team { min-width: auto; flex: 1; }
+      .match-team img { width: 44px; height: 44px; }
+      .match-team .team-name { font-size: 0.95rem; max-width: 110px; }
+      .match-vs { width: 36px; height: 36px; font-size: 0.75rem; }
+      .player-toolbar { padding: 0.7rem 0.9rem; }
+      .stream-btn { padding: 0.35rem 0.8rem; font-size: 0.68rem; }
       .ad-slot-top { height: 70px; }
       .ad-slot-sticky-bottom { height: 70px; }
       .ad-slot-sticky-bottom .ad-inner { height: 70px; }
-      .player-head { padding: 0.6rem 0.9rem; }
-      .p-btn { padding: 0.35rem 0.8rem; font-size: 0.68rem; }
-      .server-bar { padding: 0.7rem 0.9rem; }
     }
   </style>
 </head>
 <body>
 <div class="container">
 
-  <!-- ===== TOP HEADER ===== -->
+  <!-- ===== TOP HEADER BAR ===== -->
   <div class="top-header">
     <a href="index.html" class="brand">
-      <i class="fas fa-broadcast-tower"></i> <span>Streameast</span>
+      <i class="fas fa-stream"></i> <span>Streameast</span>
     </a>
-    <a href="index.html" class="back-btn">
-      <i class="fas fa-arrow-left"></i> All Matches
-    </a>
+    <div class="header-right">
+      <div class="live-dot">
+        <i class="fas fa-circle"></i> Live
+      </div>
+      <a href="index.html" class="back-btn">
+        <i class="fas fa-arrow-left"></i> All Matches
+      </a>
+    </div>
   </div>
 
   <!-- ===== MATCH HEADER ===== -->
   <div class="match-header">
     <div class="match-team">
       <img id="team1Logo" src="https://a.espncdn.com/i/teamlogos/default-team-logo-500.png" alt="Team 1">
-      <span class="m-name" id="team1Name">Team 1</span>
+      <span class="team-name" id="team1Name">Team 1</span>
     </div>
-    <div class="match-vs">
-      <div class="live-badge"><i class="fas fa-circle"></i> Live</div>
-      <div class="vs-badge">VS</div>
-      <div class="league-name" id="leagueName">
-        <i class="fas fa-trophy"></i> <span>League</span>
-      </div>
-    </div>
-    <div class="match-team">
+    <div class="match-vs">VS</div>
+    <div class="match-team right">
       <img id="team2Logo" src="https://a.espncdn.com/i/teamlogos/default-team-logo-500.png" alt="Team 2">
-      <span class="m-name" id="team2Name">Team 2</span>
+      <span class="team-name" id="team2Name">Team 2</span>
+    </div>
+    <div class="match-meta">
+      <div class="match-league" id="leagueBadge">
+        <img id="leagueLogo" src="" alt="" style="display:none;">
+        <span id="leagueName">Sports</span>
+      </div>
     </div>
   </div>
 
@@ -567,87 +530,36 @@
     <script src="https://czernik.org/22/6786ca601524f56715d5859a0fc7658f"></script>
   </div>
 
-  <!-- ===== MAIN LAYOUT: LEFT AD | PLAYER | RIGHT AD ===== -->
-  <div class="main-layout">
-
-    <!-- 160x600 LEFT -->
-    <div class="side-ad left" id="sideAdLeft">
-      <button class="ad-close-btn" onclick="closeAd('sideAdLeft')" title="Close ad">
-        <i class="fas fa-times"></i>
-      </button>
-      <script>
-        atOptions = {
-          'key' : '8460d979eaa04e23e84499b613e6aca9',
-          'format' : 'iframe',
-          'height' : 600,
-          'width' : 160,
-          'params' : {}
-        };
-      </script>
-      <script src="https://czernik.org/22/8460d979eaa04e23e84499b613e6aca9"></script>
-    </div>
-
-    <!-- PLAYER -->
-    <div class="player-area">
-      <div class="player-box">
-        <div class="player-head">
-          <div class="p-title">
-            <i class="fas fa-satellite-dish"></i>
-            <span id="playerTitle">Live Stream</span>
-          </div>
-          <div class="p-actions">
-            <button class="p-btn" id="fullscreenBtn" title="Fullscreen">
-              <i class="fas fa-expand"></i> Fullscreen
-            </button>
-            <a class="p-btn primary" id="openDirectBtn" href="#" target="_blank" rel="noopener noreferrer" title="Open in new tab">
-              <i class="fas fa-external-link-alt"></i> Open Direct
-            </a>
-          </div>
-        </div>
-
-        <div class="video-frame-wrap">
-          <iframe id="videoFrame" src="about:blank" allowfullscreen scrolling="no" referrerpolicy="no-referrer"></iframe>
-          <div class="video-placeholder" id="videoPlaceholder">
-            <i class="fas fa-spinner fa-pulse"></i>
-            <h3>Loading stream...</h3>
-            <p>Connecting to the server. If the stream does not load, try the Open Direct button.</p>
-          </div>
-        </div>
-
-        <div class="server-bar" id="serverBar" style="display:none;">
-          <div class="s-label"><i class="fas fa-server"></i> Servers:</div>
-          <!-- server buttons injected by JS -->
-        </div>
-      </div>
-
-      <div class="stream-note">
-        <i class="fas fa-info-circle"></i>
-        <strong>Stream issue?</strong> If the video shows a black screen or fails to load, try a different <strong>Server</strong>, or use the <strong>Open Direct</strong> button to open the stream in a new tab. Please disable your ad-blocker, as streams require it to be turned off. Streams usually start within 30–60 seconds, so allow a moment for the connection to begin.
+  <!-- ===== PLAYER ===== -->
+  <div class="player-wrap" id="playerWrap">
+    <div class="player-box" id="playerBox">
+      <iframe id="streamFrame" src="" allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen referrerpolicy="no-referrer" sandbox="allow-same-origin allow-scripts allow-forms allow-popups"></iframe>
+      <div class="player-error" id="playerError">
+        <i class="fas fa-video-slash"></i>
+        <span>No stream link found for this match.<br>Please go back and try another match.</span>
       </div>
     </div>
-
-    <!-- 160x600 RIGHT -->
-    <div class="side-ad right" id="sideAdRight">
-      <button class="ad-close-btn" onclick="closeAd('sideAdRight')" title="Close ad">
-        <i class="fas fa-times"></i>
-      </button>
-      <script>
-        atOptions = {
-          'key' : '8460d979eaa04e23e84499b613e6aca9',
-          'format' : 'iframe',
-          'height' : 600,
-          'width' : 160,
-          'params' : {}
-        };
-      </script>
-      <script src="https://czernik.org/22/8460d979eaa04e23e84499b613e6aca9"></script>
+    <div class="player-toolbar">
+      <div class="stream-label">
+        <i class="fas fa-broadcast-tower"></i> <span id="streamLabel">Streams</span>
+      </div>
+      <div class="stream-btns" id="streamBtns">
+        <!-- stream buttons injected by JS -->
+      </div>
+      <div class="tool-btns">
+        <button class="tool-btn" id="refreshBtn" title="Refresh stream">
+          <i class="fas fa-sync-alt"></i>
+        </button>
+        <button class="tool-btn" id="fullscreenBtn" title="Fullscreen">
+          <i class="fas fa-expand"></i>
+        </button>
+      </div>
     </div>
-
   </div>
 
   <!-- footer -->
   <div class="footer-note">
-    <a href="index.html">Streameast</a> · Live NFL, CFB, NBA, MLB, UFC &amp; Soccer Streams
+    <span class="kw">Streameast</span> · Live <span class="kw">CrackStreams</span> cards, <span class="kw">NFL Webcast</span> kickoffs &amp; <span class="kw">NFLBite</span> matchups — NFL, CFB, NBA, MLB, UFC &amp; Soccer hub.
   </div>
 </div>
 
@@ -676,209 +588,117 @@
     const ad = document.getElementById(adId);
     if (!ad) return;
     ad.style.display = 'none';
-    setTimeout(function() { ad.style.display = ''; }, 2500);
+    setTimeout(function() {
+      ad.style.display = '';
+    }, 2500);
   }
 
-  // ===== WATCH PAGE LOGIC =====
+  // ===== STREAM PAGE LOGIC =====
   (function() {
-    const API_URL = "https://ovogoal.pages.dev//api/v2/flyembed2.json";
     const params = new URLSearchParams(window.location.search);
 
-    const t1 = params.get('t1') || '';
-    const t2 = params.get('t2') || '';
+    // ===== MATCH INFO =====
+    const t1 = params.get('t1') || 'Team 1';
+    const t2 = params.get('t2') || 'Team 2';
     const logo1 = params.get('logo1') || '';
     const logo2 = params.get('logo2') || '';
-    const league = params.get('league') || '';
+    const league = params.get('league') || 'Sports';
     const leagueLogo = params.get('leaguelogo') || '';
-    const matchId = params.get('id') || '';
+    const sport = params.get('sport') || '';
 
-    // Stream URLs: stream, stream2, stream3... as many as provided
-    let streams = [];
-    ['stream','stream2','stream3','stream4','stream5','stream6','stream7','stream8'].forEach(k => {
-      const v = params.get(k);
-      if (v && v.indexOf('http') === 0) streams.push(v);
+    document.title = `${t1} vs ${t2} Live Stream | Streameast`;
+    document.getElementById('team1Name').textContent = t1;
+    document.getElementById('team2Name').textContent = t2;
+    document.getElementById('leagueName').textContent = league;
+
+    const img1 = document.getElementById('team1Logo');
+    const img2 = document.getElementById('team2Logo');
+    if (logo1) {
+      img1.src = logo1;
+      img1.onerror = function() { this.src = 'https://a.espncdn.com/i/teamlogos/default-team-logo-500.png'; };
+    }
+    if (logo2) {
+      img2.src = logo2;
+      img2.onerror = function() { this.src = 'https://a.espncdn.com/i/teamlogos/default-team-logo-500.png'; };
+    }
+    if (leagueLogo) {
+      const lImg = document.getElementById('leagueLogo');
+      lImg.src = leagueLogo;
+      lImg.style.display = '';
+      lImg.onerror = function() { this.style.display = 'none'; };
+    }
+
+    // ===== COLLECT STREAM URLS =====
+    const streams = [];
+    ['stream', 'stream2', 'stream3', 'stream4', 'stream5', 'stream6', 'stream7', 'stream8'].forEach(function(key) {
+      const u = (params.get(key) || '').trim();
+      if (u && u.indexOf('http') === 0 && streams.indexOf(u) === -1) {
+        streams.push(u);
+      }
     });
 
-    // ===== UI ELEMENTS =====
-    const elTeam1Name = document.getElementById('team1Name');
-    const elTeam2Name = document.getElementById('team2Name');
-    const elTeam1Logo = document.getElementById('team1Logo');
-    const elTeam2Logo = document.getElementById('team2Logo');
-    const elLeagueName = document.getElementById('leagueName');
-    const elPlayerTitle = document.getElementById('playerTitle');
-    const elVideoFrame = document.getElementById('videoFrame');
-    const elPlaceholder = document.getElementById('videoPlaceholder');
-    const elServerBar = document.getElementById('serverBar');
-    const elOpenDirect = document.getElementById('openDirectBtn');
-    const elFullscreenBtn = document.getElementById('fullscreenBtn');
+    const frame = document.getElementById('streamFrame');
+    const playerError = document.getElementById('playerError');
+    const streamBtns = document.getElementById('streamBtns');
+    const streamLabel = document.getElementById('streamLabel');
+    let currentIdx = 0;
 
-    const DEFAULT_LOGO = 'https://a.espncdn.com/i/teamlogos/default-team-logo-500.png';
-
-    function fillHeader() {
-      if (t1) elTeam1Name.textContent = t1;
-      if (t2) elTeam2Name.textContent = t2;
-      if (logo1) { elTeam1Logo.src = logo1; }
-      if (logo2) { elTeam2Logo.src = logo2; }
-      elTeam1Logo.onerror = function() { this.src = DEFAULT_LOGO; };
-      elTeam2Logo.onerror = function() { this.src = DEFAULT_LOGO; };
-      if (league) {
-        elLeagueName.innerHTML = (leagueLogo
-          ? '<img src="' + leagueLogo + '" alt="" onerror="this.style.display=\'none\'"> '
-          : '<i class="fas fa-trophy"></i> ') + '<span>' + league + '</span>';
+    function loadStream(idx) {
+      if (!streams.length) {
+        frame.style.display = 'none';
+        playerError.style.display = 'flex';
+        streamLabel.textContent = 'No Streams';
+        return;
       }
-      if (t1 || t2) {
-        document.title = 'Watch ' + (t1 || 'Team 1') + ' vs ' + (t2 || 'Team 2') + ' Live Stream | Streameast';
-        elPlayerTitle.textContent = (t1 || '') + ' vs ' + (t2 || '');
-      }
-    }
-
-    // ===== SMART STREAM DETECTION (fallback ?id= system) =====
-    function extractUrl(v) {
-      v = (v || '').trim();
-      if (!v) return '';
-      if (v.indexOf('<iframe') !== -1) {
-        const m = v.match(/src\s*=\s*["']([^"']+)["']/i);
-        if (m) return m[1];
-      }
-      const m = v.match(/https?:\/\/[^\s"'<>]+/);
-      return m ? m[0] : '';
-    }
-
-    function getStreamUrlsFromMatch(match) {
-      const urls = [];
-      const seen = {};
-      function add(u) {
-        u = (u || '').trim();
-        if (u && u.indexOf('http') === 0 && !seen[u]) { seen[u] = true; urls.push(u); }
-      }
-      ['iframeURL','IframeURL','iframeUrl','iframeurl','Iframe','iframe',
-       'Embed','embed','EmbedUrl','embedUrl','EMBED',
-       'Stream','stream','StreamUrl','streamUrl','StreamURL','streamURL',
-       'Url','url','URL','Link','link','WatchUrl','watchUrl','Channel','channel'
-      ].forEach(function(k) { add(extractUrl(match[k])); });
-
-      if (!urls.length) {
-        Object.keys(match).forEach(function(k) {
-          const key = k.toLowerCase();
-          if (key.indexOf('logo') !== -1) return;
-          const v = match[k];
-          if (typeof v !== 'string') return;
-          const u = extractUrl(v);
-          if (!u) return;
-          const ul = u.toLowerCase();
-          if (/\.(png|jpg|jpeg|gif|svg|webp)(\?|$)/.test(ul)) return;
-          if (ul.indexOf('embed') !== -1 || ul.indexOf('stream') !== -1 ||
-              ul.indexOf('iframe') !== -1 || ul.indexOf('watch') !== -1 ||
-              ul.indexOf('player') !== -1 || ul.indexOf('live') !== -1 ||
-              ul.indexOf('channel') !== -1 || ul.indexOf('cast') !== -1 ||
-              key.indexOf('url') !== -1 || key.indexOf('link') !== -1 ||
-              key.indexOf('embed') !== -1 || key.indexOf('stream') !== -1) {
-            add(u);
-          }
-        });
-      }
-      return urls;
-    }
-
-    // ===== PLAYER =====
-    let currentStream = '';
-
-    function showNoStream() {
-      elPlaceholder.innerHTML =
-        '<i class="fas fa-video-slash"></i>' +
-        '<h3>Stream not available</h3>' +
-        '<p>No stream link was found for this match. Please go back to the homepage and try another match.</p>';
-      elOpenDirect.style.display = 'none';
-      elFullscreenBtn.style.display = 'none';
-    }
-
-    function loadStream(url) {
-      currentStream = url;
-      elVideoFrame.src = url;
-      elOpenDirect.href = url;
-      elPlaceholder.style.display = 'none';
-      document.querySelectorAll('.server-btn').forEach(function(b) {
-        b.classList.toggle('active', b.dataset.url === url);
+      currentIdx = idx;
+      frame.style.display = '';
+      playerError.style.display = 'none';
+      // cache-bust reload
+      const sep = streams[idx].indexOf('?') !== -1 ? '&' : '?';
+      frame.src = streams[idx] + sep + '_se=' + Date.now();
+      streamLabel.textContent = `Stream ${idx + 1} of ${streams.length}`;
+      // update active button
+      streamBtns.querySelectorAll('.stream-btn').forEach(function(b, i) {
+        b.classList.toggle('active', i === idx);
       });
     }
 
-    function buildServerBar() {
-      if (streams.length <= 1) return;
-      elServerBar.style.display = 'flex';
-      elServerBar.querySelectorAll('.server-btn').forEach(function(b) { b.remove(); });
+    function buildStreamButtons() {
+      streamBtns.innerHTML = '';
+      if (!streams.length) return;
       streams.forEach(function(u, i) {
         const btn = document.createElement('button');
-        btn.className = 'server-btn';
-        btn.textContent = 'Server ' + (i + 1);
-        btn.dataset.url = u;
-        btn.onclick = function() { loadStream(u); };
-        elServerBar.appendChild(btn);
+        btn.className = 'stream-btn' + (i === 0 ? ' active' : '');
+        const icon = document.createElement('i');
+        icon.className = 'fas fa-play';
+        btn.appendChild(icon);
+        btn.appendChild(document.createTextNode(' Stream ' + (i + 1)));
+        btn.addEventListener('click', function() {
+          loadStream(i);
+        });
+        streamBtns.appendChild(btn);
       });
     }
 
-    function startPlayer() {
-      fillHeader();
-      if (streams.length) {
-        loadStream(streams[0]);
-        buildServerBar();
+    // ===== TOOLBAR BUTTONS =====
+    document.getElementById('refreshBtn').addEventListener('click', function() {
+      loadStream(currentIdx);
+    });
+
+    document.getElementById('fullscreenBtn').addEventListener('click', function() {
+      const box = document.getElementById('playerBox');
+      if (!document.fullscreenElement) {
+        if (box.requestFullscreen) box.requestFullscreen();
+        else if (box.webkitRequestFullscreen) box.webkitRequestFullscreen();
       } else {
-        showNoStream();
+        if (document.exitFullscreen) document.exitFullscreen();
+        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
       }
-    }
-
-    // ===== FALLBACK: ?id= system (find match from API) =====
-    async function fallbackById() {
-      try {
-        const response = await fetch(API_URL, { cache: 'no-store' });
-        if (!response.ok) throw new Error('HTTP ' + response.status);
-        const data = await response.json();
-        const match = data.find(function(m) { return String(m.MatchID) === String(matchId); });
-        if (!match) { showNoStream(); return; }
-
-        // fill header (if params were empty)
-        if (!t1 && match.Team1) elTeam1Name.textContent = match.Team1.trim();
-        if (!t2 && match.Team2) elTeam2Name.textContent = match.Team2.trim();
-        if (!logo1 && match.Team1Logo) elTeam1Logo.src = match.Team1Logo;
-        if (!logo2 && match.Team2Logo) elTeam2Logo.src = match.Team2Logo;
-        if (!league && match.League) {
-          elLeagueName.innerHTML = '<i class="fas fa-trophy"></i> <span>' +
-            (match.League || '').replace(/\r?\n/g, ' ').trim() + '</span>';
-        }
-        if (match.Team1 || match.Team2) {
-          document.title = 'Watch ' + (match.Team1 || 'Team 1') + ' vs ' + (match.Team2 || 'Team 2') + ' Live Stream | Streameast';
-          elPlayerTitle.textContent = (match.Team1 || '') + ' vs ' + (match.Team2 || '');
-        }
-
-        streams = getStreamUrlsFromMatch(match);
-        if (streams.length) {
-          loadStream(streams[0]);
-          buildServerBar();
-        } else {
-          showNoStream();
-        }
-      } catch (err) {
-        console.error('Fallback fetch error:', err);
-        showNoStream();
-      }
-    }
-
-    // ===== FULLSCREEN =====
-    elFullscreenBtn.addEventListener('click', function() {
-      const wrap = document.querySelector('.video-frame-wrap');
-      if (wrap.requestFullscreen) wrap.requestFullscreen();
-      else if (wrap.webkitRequestFullscreen) wrap.webkitRequestFullscreen();
-      else if (elVideoFrame.requestFullscreen) elVideoFrame.requestFullscreen();
     });
 
     // ===== INIT =====
-    if (streams.length) {
-      startPlayer();
-    } else if (matchId) {
-      fallbackById();
-    } else {
-      fillHeader();
-      showNoStream();
-    }
+    buildStreamButtons();
+    loadStream(0);
   })();
 </script>
 
@@ -894,8 +714,6 @@ hs.src = ('//s10.histats.com/js15_as.js');
 })();</script>
 <noscript><a href="/" target="_blank"><img src="//sstatic1.histats.com/0.gif?5048377&101" alt="website stats" border="0"></a></noscript>
 <!-- Histats.com  END -->
-<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"77e3ec62d8084602803f9022d872251a","r":1,"spa":2}' crossorigin="anonymous"></script>
-<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"6ecf99c626314367b97a950bc86e3f6c","r":1,"spa":2}' crossorigin="anonymous"></script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"2bf2897404284a77b31f9236738b10ab","r":1,"spa":2}' crossorigin="anonymous"></script>
 </body>
 </html>
-
